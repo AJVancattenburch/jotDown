@@ -9,6 +9,11 @@ body {
   border-bottom: 2px groove darkblue;
 }
 
+#notes {
+  background-color: aliceblue;
+  opacity: .9;
+}
+
 button {
   text-shadow: 2px 2px 2px rgb(12, 18, 39);
   box-shadow: 2px 2px rgb(12, 18, 39);
