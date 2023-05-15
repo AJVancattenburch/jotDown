@@ -1,0 +1,36 @@
+/* BASIC STYLES HERE */
+
+.add-btn {
+  border: hidden;
+  transition: .5s;
+}
+.add-btn:hover {
+  color: rgb(29, 73, 117);
+  transform: scale(1.1) rotateZ(90deg);
+  transition: .5s;
+}
+button:disabled {
+  color: rgb(159, 159, 159);
+  transform: scale(1.1) rotateZ(90deg);
+  transition: none;
+  border: hidden;
+  background-color: var(--bg-dark);
+}
+button:hover:disabled {
+  color: rgba(144, 32, 32, 0.238);
+  transform: scale(.75) rotateZ(90deg);
+  transition: 1s;
+}
+
+.bi-plus-circle-fill {
+  font-size: 3rem;
+  color: dodgerblue;
+}
+
+
+@media (max-width: 768px) {
+  p {
+    font-size: .75rem;
+  }
+
+}
