@@ -19,13 +19,13 @@
 <body class="bg-dark">
   <header class="container-fluid">
     <section class="row d-flex justify-content-center align-items-center bg-primary align-items-center">
-      <div class="col-12">
+      <div class="col-4">
         <h1>.Jot</h1>
       </div>
-      <div class="col-6 text-end">
-        <button type="button" class="btn btn-warning" onclick="app.userController.enterUserName()" style="font-size: 3rem;">Login</button>
+      <div class="col-4 text-center">
+        <button type="button" class="btn btn-success" onclick="app.userController.enterUserName()" style="font-size: 2rem;">Login</button>
       </div>
-      <div class="col-5 text-end">
+      <div class="col-4 text-end pt-3">
         <i type="button" class="bi bi-dash-circle btn btn-danger ms-2 rounded-circle mb-5" style="font-size: 2rem; opacity: .75;" onclick="app.userController.logOut()"></i>
       </div>
     </section>
@@ -34,7 +34,7 @@
   <main class="container-fluid">
 
     <!-- NOTE rows are typically always your 'parent container' and where you will put the id for draws -->
-    
+
     <section class="row pt-4" id="notes">
 
       <!-- STUB Note template -->

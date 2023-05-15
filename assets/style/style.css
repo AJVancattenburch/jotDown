@@ -1,5 +1,24 @@
 /* BASIC STYLES HERE */
+body {
+  background-image: url("https://image.freepik.com/free-vector/abstract-message-icon-low-poly-style-design_68377-340.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: .8;
+}
 
+.nav {
+  border-bottom: 2px groove darkblue;
+}
+
+button {
+  text-shadow: 2px 2px 2px rgb(12, 18, 39);
+  box-shadow: 2px 2px rgb(12, 18, 39);
+  transition: .5s;
+}
+button:hover {
+  box-shadow: inset 2px 2px rgb(12, 18, 39);
+  transition: .5s;
+}
 .add-btn {
   border: hidden;
   transition: .5s;
