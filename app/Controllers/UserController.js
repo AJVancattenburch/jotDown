@@ -16,7 +16,7 @@ export class UserController {
     }
 
     async logOut() {
-      Pop.toast("Logging Out...")
+      await Pop.confirm("Are you sure?")
       userService.logOut()
     }
 
