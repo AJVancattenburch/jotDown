@@ -37,10 +37,6 @@ export class Note {
                 <label for="description" class="form-label">Note Description</label>
                 <textarea required minlength="3" type="text" class="form-control" id="description" name="description" placeholder="Note Description" style="height: 60vh;"></textarea>
               </div>
-              <div class="mb-3 col-12">
-                <label for="img" class="form-label">Note Image</label>
-                <input required type="text" class="form-control" id="img" name="img" placeholder="Note Image">
-              </div>
             </section>
           </div>
           <div class="modal-footer">
