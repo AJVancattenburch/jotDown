@@ -4,6 +4,7 @@ import { generateId } from "../Utils/generateId.js"
 export class Note {
     constructor(data) {
         this.id = data.id || generateId()
+        this.count = data.count
         this.name = data.name
         this.description = data.description
         this.img = data.img
@@ -21,7 +22,7 @@ export class Note {
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
 
-        <form class="theme" onsubmit="app.notesController.createNote()">
+        <form class="theme" style="color" onsubmit="app.notesController.createNote()">
           <div class="modal-body container-fluid">
             <section class="row d-flex">
               <div class="mb-3 col-6 offset-3 justify-content-center align-items-center text-center">
@@ -30,7 +31,7 @@ export class Note {
               </div>
               <div class="mb-3 col-12">
                 <label for="name" class="form-label">Document</label>
-                <input required minlength="3" maxlength="20" type="text" class="form-control" id="name" name="name"
+                <input required minlength="3" maxlength="15" type="text" class="form-control" id="name" name="name"
                   placeholder="Untitled Document...">
               </div>
               <div class="mb-3 col-12">
@@ -48,48 +49,77 @@ export class Note {
 
     get CardTemplate() {
         return `
-      <div class="col-3 text-center">
-        <div onclick="app.notesController.setActive('${this.id}')" class="img-ft rounded elevation-5 selectable" data-bs-toggle="modal" data-bs-target="#modal">
-        <img id="myImg" src="https://xflower-software.com/files/Blog/HU/document.png" width="107" height="98">
-            <p>Saved on: ${this.date}</p>
-          <div class="d-flex justify-content-between px-2">
-          <p>Title: ${this.name}</p>
-          <p>Jotter: ${this.creatorName}</p>
+        <div class="col-3 wrapper text-start">
+          <div onclick="app.notesController.setActive('${this.id}')" class="img-ft rounded elevation-5 selectable ps-3" data-bs-toggle="modal" data-bs-target="#modal">
+            <img id="myImg" src="https://xflower-software.com/files/Blog/HU/document.png" width="107" height="98">
+            <div class="row">
+              <div class="col-6">
+                <p>Saved on: ${this.date}</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p>Title: ${this.name}</p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-12 text-start">
+                <p>Jotter: ${this.creatorName}</p>
+              </div>
+            </div>
+
+            <div class="row container-fluid"
+
+              <section class="col-12"
+                <blockquote contentEditable="true" style="height: 30dvh;">
+                  <p>${this.description}</p>
+                </blockquote>
+              </section>
+            </div>
           </div>
-        </div>
-      </div>`
+        </div>`
     }
 
     get ActiveTemplate() {
         return `   
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">${this.name}</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body container-fluid">
-          <section class="row">
-            <div class="col-md-6">
-              <img
-                src="${this.img}"
-                alt="">
+        <section class="modal-header text-start mt-3">
+          <div class="row">
+            <div class="col-4">
+              <h2 class="modal-title fs-5" id="exampleModalLabel">${this.name}</h2>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="col-md-6">
-              <div class="d-flex justify-content-around">
-                <p>${this.description}</p>
-              </div>
-            </div>
-          </section>
-          <section class="row justify-content-end">
-          <div class="col-2">
-          <button class="btn btn-danger" onclick="app.notesController.deleteNote('${this.id}')">Delete Note</button>
           </div>
-          </section>
-        </div>
+        </section>
 
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button onclick="app.notesController.editNote('${this.id}')" type="button" class="btn btn-primary">Edit Note</button>
-        </div>`
+        <section class="modal-body container-fluid text-start">
+
+          <section class="row text-start">
+            <div class="col-md-4">
+              <img
+                class="img-fluid"
+                src="${this.img}"
+                alt="${this.name}">
+            </div>
+            <div class="col-12">
+              <blockquote class="justify-content-start align-items-baseline" contentEditable="true">
+                <p tabindex="0">${this.description}</p>
+              </blockquote>
+            </div>
+          </section>
+
+          <section class="row d-flex">
+            <div class="col-12 justify-content-end align-items-baseline">
+              <button class="btn btn-danger" onclick="app.notesController.deleteNote('${this.id}')">Delete Note</button>
+            </div>
+          </section>
+
+        </section>`
+    }
+
+    get CountTemplate() {
+      return `
+        <h2 style="text-shadow: 1px 1px 3px #596b59;">${this.count}</h2>`
     }
 
     get ComputeDate() {

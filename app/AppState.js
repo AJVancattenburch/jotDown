@@ -10,6 +10,7 @@ class AppState extends EventEmitter {
 
   /** @type {import('./Models/Note').Note[]} */
   notes = loadState('notes', [Note])
+  count = 0
 
   /** @type {import('./Models/Note').Note|null} */
   activeNote = null
@@ -17,6 +18,7 @@ class AppState extends EventEmitter {
   userName = ''
 
   color = ''
+
 }
 
 export const appState = new Proxy(new AppState(), {

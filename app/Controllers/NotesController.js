@@ -4,7 +4,18 @@ import { Note } from "../Models/Note.js";
 import { notesService } from "../Services/NotesService.js";
 import { getFormData } from "../Utils/FormHandler.js";
 import { Pop } from "../Utils/Pop.js";
-import { setHTML } from "../Utils/Writer.js";
+import { setHTML} from "../Utils/Writer.js";
+import { setText } from "../Utils/Writer.js";
+
+function _drawDocs() {
+    console.log('drawing documents');
+    let notes = appState.notes
+    let template = ''
+    notes.forEach(n => template += n.CountTemplate)
+    
+
+    setHTML('note-count', template)
+}
 
 function _drawNotes() {
     console.log('drawing notes');
@@ -16,13 +27,14 @@ function _drawNotes() {
 
     filterNotes.forEach(n => template += n.CardTemplate)
     setHTML('notes', template)
+
 }
 
-function _changeTheme(color) {
-    color = document.getElementById('color')
+function _changeTheme(note) {
+    colorId = document.getElementById('color')
     let notes = appState.notes
-    notes.forEach(n => n.color == document.getElementById('color'))
-    setItem('color', Note.NoteForm)
+    notes.forEach(n => n.color == colorId)
+    appState.emit('color', Note.NoteForm)
 
 }
 
@@ -36,11 +48,10 @@ function _drawActive() {
     setHTML('modal-guts', note.ActiveTemplate)
 }
 
-// function _editNote(noteId) {
-//     let note = Note
-//     const formData = getFormData(noteId)
-//     formData.creatorName = appState.userName
-//     setHTML('notes', noteId)
+// function _editNote(noteDate) {
+//     let noteDate = appState.notes
+//     noteDate.forEach(n => n.date == noteDate)
+//     notesService.editNote(noteDate)
 // }
 
 export class NotesController {
@@ -48,9 +59,9 @@ export class NotesController {
         // console.log('hello from the notes controller');
 
 
-
         _drawCreateNoteButton()
         // NOTE I'm listening to the activeNote in the AppState, and if it ever changes, I am going to redraw the ActiveTemplate
+        appState.emit('note-count', _drawDocs)
         appState.on('activeNote', _drawActive)
         appState.on('notes', _drawNotes)
         appState.on('userName', _drawCreateNoteButton)
@@ -63,9 +74,11 @@ export class NotesController {
         _drawNotes()
     }
 
-    // editNote(noteId) {
-    //     notesService.editNote(noteId)
-    // }
+    addNote() {
+        // console.log('adding document')
+        notesService.addNote()
+    }
+
 
     setActive(noteId) {
         console.log('setting active', noteId)
@@ -103,6 +116,7 @@ export class NotesController {
         console.log('delete note confirm', noteId);
         if (await Pop.confirm("Are you sure?")) {
             notesService.deleteNote(noteId)
+
         }
     }
 

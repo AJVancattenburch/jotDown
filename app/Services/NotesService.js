@@ -7,7 +7,12 @@ function _saveNotes() {
 }
 
 class NotesService {
-
+    // _addNote() {
+    //     appState.notes++
+    //     console.log('adding documents', appState.notes);
+    //     _saveNotes()
+    // } 
+    
     setActive(noteId) {
         let foundNote = appState.notes.find(n => n.id == noteId)
         console.log(foundNote);
@@ -16,7 +21,9 @@ class NotesService {
 
     createNote(formData) {
         // NOTE instantiate my Note class, and make a new 'Note' out of my formData object
+        let notes = appState.notes
         let newNote = new Note(formData)
+        // notes.forEach(n => n.date == newNote.date)
         console.log('newNote', newNote);
         appState.notes.push(newNote)
         // saveState('notes', appState.notes)

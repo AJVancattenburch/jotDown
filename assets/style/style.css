@@ -1,8 +1,14 @@
 /* BASIC STYLES HERE */
+
 body {
   background-image: url("https://image.freepik.com/free-vector/abstract-message-icon-low-poly-style-design_68377-340.jpg");
   background-size: cover;
   opacity: .8;
+  text-overflow: hidden;
+}
+
+h1, h2 {
+  color: aliceblue;
 }
 
 .nav {
@@ -14,9 +20,8 @@ body {
   opacity: .9;
 }
 
-.theme {
+img {
   background-color: aliceblue;
-  height: 100dvh;
   opacity: .9;
 }
 
@@ -40,12 +45,12 @@ button:hover {
   transition: .5s;
 }
 .add-btn:hover {
-  color: rgb(29, 73, 117);
+  color: rgb(148, 194, 241);
   transform: scale(1.1) rotateZ(90deg);
   transition: .5s;
 }
 button:disabled {
-  color: rgb(159, 159, 159);
+  color: rgb(148, 194, 241);
   transform: scale(1.1) rotateZ(90deg);
   transition: none;
   border: hidden;
